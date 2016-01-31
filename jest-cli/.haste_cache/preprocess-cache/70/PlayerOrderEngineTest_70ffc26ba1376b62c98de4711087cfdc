@@ -1,0 +1,20 @@
+'use strict';
+
+
+jest.dontMock('../PlayerOrderEngine');
+
+
+describe('PlayerOrderEngine',function(){
+it('requires a list of names',function(){
+expect(function(){new (require('../PlayerOrderEngine'))(undefined);}).toThrow();
+expect(function(){new (require('../PlayerOrderEngine'))(new function(){}());}).toThrow();
+expect(function(){new (require('../PlayerOrderEngine'))([]);}).toThrow();});
+
+it('knows whose turn it is',function(){
+var engine=new (require('../PlayerOrderEngine'))([1]);
+expect(engine.currentPlayer()).toBe(1);});
+
+it('advances current player on each throw',function(){
+var engine=new (require('../PlayerOrderEngine'))([1,2]);
+engine.recordThrow(1,1);
+expect(engine.currentPlayer()).toBe(2);});});

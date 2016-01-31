@@ -1,0 +1,17 @@
+'use strict';var 
+
+Player=function(){
+function Player(name){babelHelpers.classCallCheck(this,Player);
+this.name=name;}babelHelpers.createClass(Player,[{key:'getTarget',value:function getTarget()
+
+
+{}},{key:'setTarget',value:function setTarget(
+
+
+
+target){}}]);return Player;}();
+
+
+
+
+module.exports=Player;

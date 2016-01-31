@@ -1,0 +1,48 @@
+'use strict';
+
+
+jest.dontMock('../GameEngine');
+
+
+
+describe('GameEngine',function(){
+it('requires an array with at least one player',function(){
+expect(function(){new (require('../GameEngine'))(undefined);}).toThrow();
+expect(function(){new (require('../GameEngine'))(new function(){}());}).toThrow();
+expect(function(){new (require('../GameEngine'))([]);}).toThrow();});
+
+it('knows whose turn it is',function(){
+var engine=new (require('../GameEngine'))([1]);
+expect(engine.currentPlayer()).toBe(1);});
+
+it('advance current player on next turn',function(){
+var engine=new (require('../GameEngine'))([1,2]);
+engine.nextTurn();
+expect(engine.currentPlayer()).toBe(2);});
+
+it('starts with the first player after the last',function(){
+var engine=new (require('../GameEngine'))([1,2]);
+engine.nextTurn();
+engine.nextTurn();
+expect(engine.currentPlayer()).toBe(1);});
+
+it('automatically advances after three throws',function(){
+var engine=new (require('../GameEngine'))([1,2]);
+engine.recordThrow(20,1);
+engine.recordThrow(20,1);
+engine.recordThrow(20,1);
+expect(engine.currentPlayer()).toBe(2);});
+
+it('resets number of darts thrown on advance',function(){
+var engine=new (require('../GameEngine'))([1,2]);
+engine.recordThrow(20,1);
+engine.nextTurn();
+expect(engine._dartsThrown).toBe(0);});
+
+it('advances a player if he hits his number',function(){
+var player=new (require('../Player'))("test user");
+player.getTarget.mockReturnValue(1);
+
+var engine=new (require('../GameEngine'))([player]);
+engine.recordThrow(1,1);
+expect(player.setTarget).toBeCalledWith(18);});});

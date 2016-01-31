@@ -1,0 +1,42 @@
+'use strict';
+
+var kDartsPerTurn=3;
+var kDartBoardLayout=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5,20];var 
+
+GameEngine=function(){
+function GameEngine(players){babelHelpers.classCallCheck(this,GameEngine);
+if(!(players instanceof Array)||players.length===0){
+throw new Error("Specify at least one player");}
+
+this._players=players;
+this._currentPlayerIndex=0;
+this._dartsThrown=0;
+this._winner=null;}babelHelpers.createClass(GameEngine,[{key:"currentPlayer",value:function currentPlayer()
+
+
+{
+return this._players[this._currentPlayerIndex];}},{key:"nextTurn",value:function nextTurn()
+
+
+{
+this._dartsThrown=0;
+this._currentPlayerIndex=
+(this._currentPlayerIndex+1)%this._players.length;}},{key:"recordThrow",value:function recordThrow(
+
+
+number,factor){
+var currentPlayer=this.currentPlayer();
+if(currentPlayer.target==number){
+var previousTargetIndexOnBoard=kDartBoardLayout.indexOf(number);
+var newTargetIndexOnBoard=previousTargetIndexOnBoard+factor;
+currentPlayer.target=kDartBoardLayout[newTargetIndexOnBoard];}
+
+
+this._dartsThrown+=1;
+if(this._dartsThrown===kDartsPerTurn){
+this.nextTurn();}}}]);return GameEngine;}();
+
+
+
+
+module.exports=GameEngine;

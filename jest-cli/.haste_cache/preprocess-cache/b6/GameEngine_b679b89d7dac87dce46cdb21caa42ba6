@@ -1,0 +1,21 @@
+'use strict';var 
+
+GameEngine=function(){
+function GameEngine(players){babelHelpers.classCallCheck(this,GameEngine);
+if(!players||players.length===0){
+throw new Error("Specify at least one player");}
+
+this.players=players;
+this.currentPlayerIndex=0;}babelHelpers.createClass(GameEngine,[{key:"currentPlayer",value:function currentPlayer()
+
+
+{
+return this.p;}},{key:"nextTurn",value:function nextTurn()
+
+
+{}}]);return GameEngine;}();
+
+
+
+
+module.exports=GameEngine;

@@ -1,0 +1,76 @@
+'use strict';
+
+var kDartsPerTurn=3;
+var kDartBoardLayout=[1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5,20];var 
+
+GameEngine=function(){
+function GameEngine(players){babelHelpers.classCallCheck(this,GameEngine);
+if(!(players instanceof Array)||players.length===0){
+throw new Error("Specify at least one player");}
+
+this._players=players;
+this._currentPlayerIndex=0;
+this._dartsThrown=0;
+this._winner=null;
+this._drinkers={};}babelHelpers.createClass(GameEngine,[{key:"currentPlayer",value:function currentPlayer()
+
+
+{
+return this._players[this._currentPlayerIndex];}},{key:"getWinner",value:function getWinner()
+
+
+{
+return this._winner;}},{key:"getDrinkers",value:function getDrinkers()
+
+
+{
+return this._drinkers;}},{key:"addDrinker",value:function addDrinker(
+
+
+player,numberOfDrinks){
+var currentDrinks=this._drinkers[player.name]||0;
+this._drinkers[player.name]=currentDrinks+numberOfDrinks;}},{key:"nextTurn",value:function nextTurn()
+
+
+{
+this._dartsThrown=0;
+this._currentPlayerIndex=
+(this._currentPlayerIndex+1)%this._players.length;}},{key:"recordThrow",value:function recordThrow(
+
+
+number,factor){
+var currentPlayer=this.currentPlayer();
+if(currentPlayer.target===number){
+this._advance(currentPlayer,factor);}else 
+{var _iteratorNormalCompletion=true;var _didIteratorError=false;var _iteratorError=undefined;try{
+for(var _iterator=this._players[Symbol.iterator](),_step;!(_iteratorNormalCompletion=(_step=_iterator.next()).done);_iteratorNormalCompletion=true){var player=_step.value;
+if(player.target===number){
+this._advance(player,factor);}}}catch(err){_didIteratorError=true;_iteratorError=err;}finally {try{if(!_iteratorNormalCompletion&&_iterator.return){_iterator.return();}}finally {if(_didIteratorError){throw _iteratorError;}}}}
+
+
+
+
+this._dartsThrown+=1;
+if(this._dartsThrown===kDartsPerTurn){
+this.nextTurn();}}},{key:"_advance",value:function _advance(
+
+
+
+player,factor){
+var previousTargetIndexOnBoard=kDartBoardLayout.indexOf(player.target);
+var newTargetIndexOnBoard=previousTargetIndexOnBoard+factor;
+if(newTargetIndexOnBoard>=20){
+this._winner=player;}else 
+{
+player.target=kDartBoardLayout[newTargetIndexOnBoard];}
+
+this.addDrinker(this._nextPlayer(player),factor);}},{key:"_nextPlayer",value:function _nextPlayer(
+
+
+currentPlayer){
+var index=this._players.indexOf(currentPlayer);
+return this._players[(index+1)%this._players.length];}}]);return GameEngine;}();
+
+
+
+module.exports=GameEngine;

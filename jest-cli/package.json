@@ -1,0 +1,115 @@
+{
+  "name": "jest-cli",
+  "description": "Painless JavaScript Unit Testing.",
+  "version": "0.8.2",
+  "main": "src/jest.js",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "cover": "^0.2.9",
+    "diff": "^2.1.1",
+    "graceful-fs": "^4.1.2",
+    "istanbul": "^0.3.19",
+    "jsdom": "^7.2.0",
+    "json-stable-stringify": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "node-haste": "^1.2.8",
+    "object-assign": "^4.0.1",
+    "optimist": "^0.6.1",
+    "resolve": "^1.1.6",
+    "sane": "^1.2.0",
+    "which": "^1.1.1",
+    "worker-farm": "^1.3.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.7.3",
+    "fbjs-scripts": "^0.3.0"
+  },
+  "bin": {
+    "jest": "./bin/jest.js"
+  },
+  "engines": {
+    "node": ">= 4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebook/jest.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "prepublish": "npm test",
+    "test": "npm run lint && npm run jasmine1 && npm run jasmine2",
+    "jasmine1": "node bin/jest.js --testRunner='<rootDir>/testRunners/jasmine/jasmine1.js'",
+    "jasmine2": "node bin/jest.js --testRunner='<rootDir>/testRunners/jasmine/jasmine2.js'"
+  },
+  "jest": {
+    "rootDir": "src",
+    "testPathIgnorePatterns": [
+      "/__tests__/[^/]*/.+"
+    ],
+    "testEnvironment_EXPERIMENTAL": "<rootDir>/environments/NodeEnvironment",
+    "globals": {
+      "CACHE_DIRECTORY": "<rootDir>/../.haste_cache"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/facebook/jest/issues"
+  },
+  "homepage": "http://facebook.github.io/jest/",
+  "keywords": [
+    "facebook",
+    "jest",
+    "test",
+    "unit",
+    "jasmine",
+    "mock"
+  ],
+  "license": "BSD-3-Clause",
+  "gitHead": "f94b8af054e0e27647f66a633c1e3e80866889d5",
+  "_id": "jest-cli@0.8.2",
+  "_shasum": "6b37501905f0cf186fc18878be6e6d06024d149d",
+  "_from": "jest-cli@latest",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.1",
+  "_npmUser": {
+    "name": "cpojer",
+    "email": "christoph.pojer@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "amasad",
+      "email": "amjad.masad@gmail.com"
+    },
+    {
+      "name": "cpojer",
+      "email": "christoph.pojer@gmail.com"
+    },
+    {
+      "name": "dmitrysoshnikov",
+      "email": "dmitry.soshnikov@gmail.com"
+    },
+    {
+      "name": "fb",
+      "email": "opensource+npm@fb.com"
+    },
+    {
+      "name": "jeffmo",
+      "email": "lbljeffmo@gmail.com"
+    },
+    {
+      "name": "leebyron",
+      "email": "lee@leebyron.com"
+    },
+    {
+      "name": "zpao",
+      "email": "paul@oshannessy.com"
+    }
+  ],
+  "dist": {
+    "shasum": "6b37501905f0cf186fc18878be6e6d06024d149d",
+    "tarball": "http://registry.npmjs.org/jest-cli/-/jest-cli-0.8.2.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/jest-cli/-/jest-cli-0.8.2.tgz",
+  "readme": "ERROR: No README data found!"
+}

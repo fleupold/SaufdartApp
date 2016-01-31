@@ -1,0 +1,12 @@
+'use strict';
+
+var kFristTarget=1;var 
+
+Player=
+function Player(name){babelHelpers.classCallCheck(this,Player);
+this.name=name;
+this.target=1;};
+
+
+
+module.exports=Player;

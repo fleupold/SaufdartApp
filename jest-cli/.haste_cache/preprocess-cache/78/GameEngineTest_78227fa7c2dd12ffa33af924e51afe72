@@ -1,0 +1,7 @@
+jest.dontMock('../GameEngine');
+
+describe('GameEngine',function(){
+it('knows whose turn it is',function(){
+var GameEngine=require('../sum');
+var engine=new GameEngine([1]);
+expect(engine.currentPlayer).toBe(1);});});

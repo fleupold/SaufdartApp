@@ -1,0 +1,21 @@
+'use strict';var 
+
+PlayerOrderEngine=function(){
+function PlayerOrderEngine(player){babelHelpers.classCallCheck(this,PlayerOrderEngine);
+if(!(player instanceof Array)||player.length===0){
+throw new Error("Specify at least one player");}
+
+this._player=player;
+this._currentPlayerIndex=0;}babelHelpers.createClass(PlayerOrderEngine,[{key:"currentPlayer",value:function currentPlayer()
+
+
+{
+return this._player[this._currentPlayerIndex];}},{key:"recordThrow",value:function recordThrow(
+
+
+number,factor){}}]);return PlayerOrderEngine;}();
+
+
+
+
+module.exports=PlayerOrderEngine;
