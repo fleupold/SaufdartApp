@@ -1,0 +1,5 @@
+var GameEngine=function(players){
+this.player=players;};
+
+
+module.exports=GameEngine;

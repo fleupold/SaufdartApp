@@ -1,0 +1,9 @@
+'use strict';var 
+
+Player=
+function Player(name){babelHelpers.classCallCheck(this,Player);
+this.name=name;};
+
+
+
+module.exports=Player;

@@ -1,0 +1,36 @@
+'use strict';var 
+
+PlayerOrderEngine=function(){
+function PlayerOrderEngine(players){babelHelpers.classCallCheck(this,PlayerOrderEngine);
+if(!(players instanceof Array)||players.length===0){
+throw new Error("Specify at least one players");}
+
+this._players=players;
+this._currentPlayerIndex=0;
+this._scores={};}babelHelpers.createClass(PlayerOrderEngine,[{key:"currentPlayer",value:function currentPlayer()
+
+
+{
+return this._players[this._currentPlayerIndex];}},{key:"recordThrow",value:function recordThrow(
+
+
+number,factor){
+var score=number*factor;
+if(!this._scores[score]){
+this._scores[score]=[this.currentPlayer()];}else 
+{
+this._scores[score]=this._scores[score].push(this.currentPlayer());}
+
+this._currentPlayerIndex++;}},{key:"playerOrder",value:function playerOrder()
+
+
+{
+var players=[];var _iteratorNormalCompletion=true;var _didIteratorError=false;var _iteratorError=undefined;try{
+for(var _iterator=this._scores[Symbol.iterator](),_step;!(_iteratorNormalCompletion=(_step=_iterator.next()).done);_iteratorNormalCompletion=true){var score=_step.value;
+players.concat(this._scores[score]);}}catch(err){_didIteratorError=true;_iteratorError=err;}finally {try{if(!_iteratorNormalCompletion&&_iterator.return){_iterator.return();}}finally {if(_didIteratorError){throw _iteratorError;}}}
+
+return players;}}]);return PlayerOrderEngine;}();
+
+
+
+module.exports=PlayerOrderEngine;

@@ -1,0 +1,32 @@
+'use strict';
+
+var kDartsPerTurn=3;var 
+
+GameEngine=function(){
+function GameEngine(players){babelHelpers.classCallCheck(this,GameEngine);
+if(!players||players.length===0){
+throw new Error("Specify at least one player");}
+
+this.players=players;
+this.currentPlayerIndex=0;
+this.dartsThrown=0;}babelHelpers.createClass(GameEngine,[{key:"currentPlayer",value:function currentPlayer()
+
+
+{
+return this.players[this.currentPlayerIndex];}},{key:"nextTurn",value:function nextTurn()
+
+
+{
+this.currentPlayerIndex=
+(this.currentPlayerIndex+1)%this.players.length;}},{key:"recordThrow",value:function recordThrow()
+
+
+{
+this.dartsThrown+=1;
+if(this.dartsThrown===kDartsPerTurn){
+this.nextTurn();}}}]);return GameEngine;}();
+
+
+
+
+module.exports=GameEngine;

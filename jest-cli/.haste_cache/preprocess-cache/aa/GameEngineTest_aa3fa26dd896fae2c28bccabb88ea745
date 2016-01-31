@@ -1,0 +1,19 @@
+'use strict';
+
+
+
+
+
+
+jest.dontMock('../GameEngine');
+
+
+(0,_jest2.describe)('GameEngine',function(){
+it('requires at least one player',function(){
+expect(function(){new (require('../GameEngine'))([]);}).toThrow();});
+
+it('knows whose turn it is',function(){
+var engine=new (require('../GameEngine'))([1]);
+expect(engine.currentPlayer).toBe(1);});
+
+it('advance current player on next turn',function(){});});

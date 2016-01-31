@@ -1,0 +1,9 @@
+var GameEngine=function(players){
+if(!players){
+throw "Sepcify at least one player";}
+
+this.player=players;
+this.currentPlayer=players[0];};
+
+
+module.exports=GameEngine;

@@ -1,0 +1,12 @@
+jest.dontMock('../GameEngine');
+
+describe('GameEngine',function(){
+it('requires at least one player',function(){
+var GameEngine=require('../GameEngine');
+var engine=new GameEngine([]);
+expect(engine.currentPlayer).toThrow();});
+
+it('knows whose turn it is',function(){
+var GameEngine=require('../GameEngine');
+var engine=new GameEngine([1]);
+expect(engine.currentPlayer).toBe(1);});});

@@ -1,0 +1,6 @@
+var GameEngine=function(players){
+this.player=players;
+this.currentPlayer=players[0];};
+
+
+module.exports=GameEngine;
